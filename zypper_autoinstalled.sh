@@ -2,10 +2,8 @@
 
 zypper se -i --type package | grep "i |" | cut -d"|" -f2 | cut -d" " -f2 | sort  > /tmp/autoinstalled
 
-sort /var/lib/zypp/world -o /var/lib/zypp/world
+sort /etc/zypp/systemCheck.d/world | cut -d":" -f2 > /tmp/world
 
-comm -23 /tmp/autoinstalled /var/lib/zypp/world  > /var/lib/zypp/AutoInstalled
+comm -23 /tmp/autoinstalled /tmp/world  > /var/lib/zypp/AutoInstalled
 
-rm /tmp/autoinstalled
-
-cat /var/lib/zypp/AutoInstalled
+rm /tmp/autoinstalled /tmp/world
