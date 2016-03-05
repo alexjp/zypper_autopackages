@@ -2,7 +2,7 @@
 
 zypper se -i --type package | grep "i |" | cut -d"|" -f2 | cut -d" " -f2 | sort  > /tmp/autoinstalled
 
-sort /etc/zypp/systemCheck.d/world | cut -d":" -f2 > /tmp/world
+sort /etc/zypp/systemCheck | grep requires | cut -d":" -f2 > /tmp/world
 
 comm -23 /tmp/autoinstalled /tmp/world  > /var/lib/zypp/AutoInstalled
 
