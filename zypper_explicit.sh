@@ -4,7 +4,7 @@ zypper se -i --type package | grep "i |" | cut -d"|" -f2 | cut -d" " -f2 | sort 
 
 cat /var/lib/zypp/AutoInstalled | sort > /tmp/_zypp_auto
 
-cp /etc/zypp/.systemCheck /etc/zypp/systemCheck
+cp /etc/zypp/.systemCheck /etc/zypp/systemCheck 2>/dev/null || touch /etc/zypp/systemCheck
 
 echo  >> /etc/zypp/systemCheck
 echo "## User packages ##" >> /etc/zypp/systemCheck
